@@ -4,18 +4,21 @@ All notable changes to this project are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com); versions follow semver and
 match the `version` field in `herdr-plugin.toml`.
 
-## [0.9.0] — 2026-10-05
+## [0.9.0] — 2026-10-13
 
 ### Added
 
-- **Windows support** via a Go port in `go/`, contributed by @wapenshaw (#7).
-  It sits alongside the Bash implementation: Linux/macOS keep the `bin/`
-  picker, and Windows runs `herdr-theme-picker.exe`, built from `go/` on
-  install. The `open` action runs `./herdr-theme-picker` (a small Bash
-  dispatcher on Linux/macOS, the `.exe` on Windows), so the
-  `herdr-theme-picker.open` keybind works on every platform. The
-  bundled theme set grows from 20 to 112; the Bash picker sees the new
-  themes too.
+- **Windows support (beta)** via a Go port in `go/`, contributed by
+  [@wapenshaw](https://github.com/wapenshaw) (#7, #8). It sits alongside the
+  Bash implementation: Linux/macOS keep the `bin/` picker, and Windows runs
+  `herdr-theme-picker.exe`, built from `go/` on install. The `open` action runs
+  `./herdr-theme-picker` (a small Bash dispatcher on Linux/macOS, the `.exe` on
+  Windows), so the `herdr-theme-picker.open` keybind works on every platform.
+  The bundled theme set grows from 19 to 112; the Bash picker sees the new
+  themes too. Note: Herdr ships Windows plugin manifests on its preview channel
+  and describes Windows plugin exec as best-effort, so the Go path is beta. The
+  Go port does not download themes from terminalcolors.com; Windows uses the
+  bundled set plus clipboard/editor imports.
 
 ## [0.8.2] — 2026-10-05
 

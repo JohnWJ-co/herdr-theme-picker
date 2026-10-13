@@ -36,11 +36,12 @@ mapped into `[theme.custom]` in your `config.toml` and reloaded automatically.
 ## Features
 
 - **`prefix+t`** → an fzf popup with a live truecolor swatch preview.
-- **19 popular themes bundled offline** (Dracula, Gruvbox, Nord, Tokyo Night,
+- **112 popular themes bundled offline** (Dracula, Gruvbox, Nord, Tokyo Night,
   Catppuccin, Solarized, One Dark, Everforest, Rosé Pine, Kanagawa, Ayu,
-  GitHub, …).
+  GitHub, Nightfox, Zenbones, Noctis, …).
 - **Live-fetch** any other theme from terminalcolors.com on selection
-  (needs internet), cached locally.
+  (needs internet), cached locally. *(macOS, Linux; not on Windows — see
+  [Compatibility](#compatibility).)*
 - **Live terminal color sync** — OSC 4/10/11 sequences update your terminal
   emulator's ANSI palette instantly, no restart needed. Works with any
   emulator that supports OSC color setting (Ghostty, iTerm2, WezTerm, …).
@@ -65,8 +66,14 @@ termscope). If not: `brew install fzf` (macOS), your distro's package, or
 macOS and Linux run the Bash implementation in `bin/`. Windows runs a Go
 port in `go/`, which Herdr builds into `herdr-theme-picker.exe` when the
 plugin is installed. WSL counts as Linux and uses the Bash implementation.
-Windows themes come from the bundled set plus your own imports (clipboard or
-editor); the Go port does not download themes.
+
+> **Windows is beta.** Herdr supports Windows plugin manifests on its preview
+> channel, and its own docs describe install/build/actions/panes on Windows as
+> best-effort. The Go port keeps feature parity for the picker, applying
+> themes, `[theme.custom]` writes, user themes (add/edit/delete) and OSC
+> terminal sync — but it does **not** download themes from terminalcolors.com.
+> Windows themes come from the 112 bundled palettes plus your own imports
+> (clipboard or editor). Ping [@qintmb](https://github.com/qintmb) with issues.
 
 ---
 
@@ -434,6 +441,27 @@ If you added the `prefix+t` keybind block to your `config.toml` manually (see
 [Install](#install)), remove it there too — Herdr 0.8.2 does not bind keys from
 plugin manifests. Your `[theme.custom]` block and its backups remain in
 `config.toml` until you edit them out.
+
+---
+
+## Contributors
+
+Thanks to everyone who has contributed to this plugin:
+
+- [@wapenshaw](https://github.com/wapenshaw) — Go port with Windows support
+  ([#7](https://github.com/qintmb/herdr-theme-picker/issues/7),
+  [#8](https://github.com/qintmb/herdr-theme-picker/pull/8)).
+- [@neospeed83](https://github.com/neospeed83) — live terminal color sync via
+  OSC sequences ([#2](https://github.com/qintmb/herdr-theme-picker/pull/2),
+  merged).
+- [@tahsinature](https://github.com/tahsinature) — preserve symlinked
+  `config.toml` ([#3](https://github.com/qintmb/herdr-theme-picker/issues/3),
+  [#4](https://github.com/qintmb/herdr-theme-picker/pull/4)).
+- [@DagoKingo](https://github.com/DagoKingo) — outer-PTY detection on Linux
+  ([#5](https://github.com/qintmb/herdr-theme-picker/issues/5),
+  [#6](https://github.com/qintmb/herdr-theme-picker/pull/6)).
+
+New contributors are welcome — open an issue or PR.
 
 ---
 
